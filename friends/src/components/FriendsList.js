@@ -1,42 +1,46 @@
 import React from 'react';
-import moment from 'moment';
-import Loader from 'react-loader-spinner';
+import FriendCard from './FriendCard';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 class FriendsList extends React.Component {
   state = {
-      FriendsList: []
+    friends: []
   };
 
   componentDidMount() {
-      this.getData();
+    this.getData();
   }
 
   getData = () => {
     axiosWithAuth()
-      .get('/data')
+      .get('/friends/')
       .then(res => {
-          console.log(res);
-        // this.setState({
-
-        // });
+        this.setState({
+          friends: res.data
+        })
       })
       .catch(err => console.log(err));
   };
 
-  formatData = () => {
-      const formattedData = [];
-      console.log(formattedData);
-      return formattedData;
-  }
 
-  render() {
-      return(
-      <div>
-          <p>Hello</p>
-      </div>    
+    render() {
+      return (
+        <div>
+          <h2>Friends: </h2>
+          <div>
+            {this.state.friends.map(item => (
+              <div key = {item.id}>
+              <FriendCard name = {item.name}
+                      age = {item.age}
+                      email = {item.email}
+                      id = {item.id} 
+              />
+              </div>
+            ))}
+          </div>
+        </div>
       )
-  }
+    }
 }
 
 export default FriendsList
