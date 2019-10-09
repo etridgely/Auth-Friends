@@ -1,6 +1,6 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import {  Form } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 
 class AddFriend extends React.Component {
     state = {

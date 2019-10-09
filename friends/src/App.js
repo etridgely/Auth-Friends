@@ -13,7 +13,7 @@ function App() {
         <Switch>
         <Route path="/login" component={Login} />
         <PrivateRoute exact path="/protected" component={FriendsList} />
-        <PrivateRoute exact path="/addfriend" component={AddFriend} />
+        <PrivateRoute exact path="/protected" component={AddFriend} />
         <Route component={Login} />
         </Switch>       
     </Router>
